@@ -41,13 +41,10 @@ defmodule Issues.TablePrinter do
 
   defp issue_value(issue, %{ size: size, value: key}) do
     issue[key]
-    |> as_string
+    |> to_string
     |> cut_string(size)
     |> fit_to_cell(size)
   end
-
-  defp as_string(value) when is_integer(value), do: Integer.to_string(value)
-  defp as_string(value), do: value
 
   defp cut_string(data, size) do
     if String.length(data) <= size do
