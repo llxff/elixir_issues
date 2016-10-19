@@ -47,6 +47,7 @@ defmodule Issues.CLI do
     |> decode_response
     |> sort_into_ascending_order
     |> Enum.take(count)
+    |> Issues.TablePrinter.puts
   end
 
   def decode_response({:ok, body}), do: body
