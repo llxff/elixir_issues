@@ -12,13 +12,11 @@ defmodule Issues.TablePrinter do
 
   defp print_header do
     @columns
-    |> Enum.map(&(fit_to_cell(&1.name, &1.size)))
-    |> Enum.join("|")
+    |> Enum.map_join("|", &(fit_to_cell(&1.name, &1.size)))
     |> IO.puts
 
     @columns
-    |> Enum.map(&separator/1)
-    |> Enum.join("+")
+    |> Enum.map_join("+", &separator/1)
     |> IO.puts
   end
 
@@ -34,8 +32,7 @@ defmodule Issues.TablePrinter do
 
   defp print_issue(issue) do
     @columns
-    |> Enum.map(&(issue_value(issue, &1)))
-    |> Enum.join("|")
+    |> Enum.map_join("|", &(issue_value(issue, &1)))
     |> IO.puts
   end
 
