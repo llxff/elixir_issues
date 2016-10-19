@@ -13,7 +13,7 @@ defmodule Issues.CLI do
   the number of entries to format.
   Return a tuple of `{ user, project, count }`, or `:help` if help was given.
   """
-  def run(argv) do
+  def main(argv) do
     argv
     |> parse_args
     |> process
